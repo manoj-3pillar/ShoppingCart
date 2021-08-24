@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { Product } from "src/app/models/product";
 import { ProductService } from "src/app/services/product.service";
 
 @Component({
@@ -10,23 +11,18 @@ import { ProductService } from "src/app/services/product.service";
 export class ProductComponent implements OnInit{
  
     productID: any;
-    productData: any;
+    productData: Product = new Product(99, "Dummy Product", "Dummy Desc", 0, "DummyUrl");
     constructor(
         private productService: ProductService,
         private actRoute: ActivatedRoute
     ){}
-    // ngOnInit(): void {
-    //     throw new Error("Method not implemented.");
-    // }
 
     ngOnInit(){
         this.productID = this.actRoute.snapshot.params['id'];
-        // this.loadProductDetails(this.productID);
+        this.loadProductDetails(this.productID);
     }
 
-    // loadProductDetails(productID : number){
-    //       this.productService.getProductDescription(productID).subscribe((product: any) => {
-    //       this.productData = product;
-    //     });
-    //   }
+    loadProductDetails(productID : number){
+           this.productData = this.productService.getProducts().filter(prod => prod.id == this.productID)[0];
+      }
 }

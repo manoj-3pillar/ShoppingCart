@@ -23,3 +23,8 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.ProdName{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}

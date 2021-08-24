@@ -1,12 +1,13 @@
 <div class="test">
     <div class="flex-container">
         <div class="productImage">
-              <!-- XYZ -->
-              <img class="LapImage" src="laptop-336378__480.jpg" alt="">
+              <img class="LapImage" [src]="productData.imageUrl" alt="">
           </div>
           <div class="productDetails">
-              <h3 class="ProdName">PRODUCT NAME</h3>
-              <p class="prodDesc">Product Description</p>
+              <h3 class="ProdName">{{productData.name}}</h3>
+              <p class="prodDesc">{{productData.description}}</p>
+              <small class="text-muted"><strong>{{ productData.price | currency:'INR'}}</strong></small>
+              <button type="button" class="btn btn-sm btn-primary">Add to Cart</button>
            </div> 
     </div>
 </div>
