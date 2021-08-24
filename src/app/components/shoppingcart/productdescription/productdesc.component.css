@@ -1,0 +1,25 @@
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    border: 3px solid green;
+    width: 50%;
+}
+
+.productImage{
+    width: 50%;
+}
+.LapImage{
+    width: 95%;
+}
+.productDetails{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 50%;
+}
+.test{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
