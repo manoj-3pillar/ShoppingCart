@@ -20,7 +20,6 @@ export class ProductItemComponent implements OnInit {
   }
 
  getProductDesc(id: number): void{
-   console.log(id);
     this.router.navigate(['/product/'+id]);
   }
 

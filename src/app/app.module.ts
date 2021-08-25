@@ -14,6 +14,7 @@ import { ProductItemComponent } from './components/shoppingcart/productlist/prod
 import { ProductComponent } from './components/shoppingcart/productdescription/productdesc.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CheckoutComponent } from './components/shoppingcart/checkout/checkout.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     CartComponent,
     CartItemComponent,
     ProductItemComponent,
-    ProductComponent
+    ProductComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,10 +14,15 @@ export class CartComponent implements OnInit {
     { id:3, productId:3, productName: "product Nmae 3", qty:3, price:120 },
     { id:2, productId:2, productName: "product Nmae 2", qty:5, price:120 }
   ];
-  
-  constructor() { }
+  isUserLogin: boolean = true;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  proceedToCheckout(): void{
+    if(this.isUserLogin)
+        this.router.navigate(['/checkout']);
   }
 
 }
