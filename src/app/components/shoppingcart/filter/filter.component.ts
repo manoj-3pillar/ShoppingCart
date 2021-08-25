@@ -13,6 +13,8 @@ export class FilterComponent implements OnInit {
   isFilterByCategory: boolean = false;
   categories: Category[] = [];
   selectedCategories: number[] = [];
+  fromRange: number = 0;
+  toRange: number = 0;
 
   constructor(private productService : ProductService) { }
 
@@ -41,10 +43,27 @@ export class FilterComponent implements OnInit {
   }
 
   updateFromRange(): void {
-    console.log("srer")
+    console.log(this.fromRange)
   }
 
   updateToRange(): void {
-    console.log("dfdg")
+    console.log(this.toRange)
+  }
+
+  clear(filterType: string = 'Default'): void {
+    if(filterType === "Category"){
+      this.selectedCategories = [];
+      this.isFilterByCategory = false;
+    }
+    else if(filterType === "Price"){
+      
+      this.isFilterByPrice = false;
+    }
+    else{
+      this.selectedCategories = [];
+
+      this.isFilterByPrice = false;
+      this.isFilterByCategory = false;
+    }
   }
 }

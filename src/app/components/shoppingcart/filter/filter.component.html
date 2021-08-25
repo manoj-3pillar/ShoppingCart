@@ -16,19 +16,19 @@
             </div>
 
             <div class="filter-body" *ngIf="isFilterByPrice">
-                <button class="btn btn-sm clear-filter">
+                <button class="btn btn-sm clear-filter" (click)="clear('Price')">
                     <span style>clear</span>
                 </button> 
                 <br />
 
                 <div class="form-group">
                     <label for="from">Range from:</label>
-                    <input type="number" id="from" class="form-control" (click)="updateFromRange()">
+                    <input type="number" id="from" class="form-control" [value]="fromRange" (change)="updateFromRange()">
                 </div>
     
                 <div class="form-group">
                     <label for="to">Range to:</label>
-                    <input type="number" id="to" class="form-control" (click)="updateToRange()">
+                    <input type="number" id="to" class="form-control" [value]="toRange" (change)="updateToRange()">
                 </div>                     
             </div>
         </div>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="filter-body" *ngIf="isFilterByCategory">
-                <button class="btn btn-sm clear-filter">
+                <button class="btn btn-sm clear-filter" (click)="clear('Category')">
                     <span style>clear</span>
                 </button>
                 <br />
@@ -76,6 +76,6 @@
 
         <hr />
         <button type="button" class="btn btn-primary btn-sm apply-changes">Apply Changes</button>
-        <button type="button" class="btn btn-default btn-sm clear-changes">Clear Changes</button>
+        <button type="button" class="btn btn-default btn-sm clear-changes" (click)="clear()">Clear Changes</button>
     </div>
 </div>
