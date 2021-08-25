@@ -1,3 +1,4 @@
+import { ProductCategory } from './../../../models/enums/category-enum';
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Product } from "src/app/models/product";
@@ -11,7 +12,7 @@ import { ProductService } from "src/app/services/product.service";
 export class ProductComponent implements OnInit{
  
     productID: any;
-    productData: Product = new Product(99, "Dummy Product", "Dummy Desc", 0, "DummyUrl");
+    productData: Product = new Product(99, "Dummy Product", "Dummy Desc", 0, "DummyUrl", ProductCategory.Electronics);
     constructor(
         private productService: ProductService,
         private actRoute: ActivatedRoute

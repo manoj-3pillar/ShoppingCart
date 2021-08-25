@@ -1,3 +1,4 @@
+import { ProductCategory } from './../../../../models/enums/category-enum';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
@@ -10,9 +11,9 @@ import { Product } from 'src/app/models/product';
 export class ProductItemComponent implements OnInit {
 
   @Input()
-  productItem!: Product;
+  productItem!: Product;z =1;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
   }

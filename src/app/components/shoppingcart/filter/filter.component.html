@@ -1,21 +1,81 @@
-<div class="card filters">
+<div class="card card-headers">
     <div class="card-header">
         <strong>Filters</strong>
     </div>
 
     <div class="card-body">
-        <form>
-            <div class="form-group">
-                <label for="from">From</label>
-                <input type="number" id="from" class="form-control" >
+        <div class="filter price-filter">
+            <div class="filter-head">
+                <div class="row" style="background: gray;">
+                    <button type="button" class="price-flt" (click)="filterByPrice()">
+                        <span>&emsp;Price</span>
+                        <span class="expand-filter" *ngIf="!isFilterByPrice">+</span>
+                        <span class="expand-filter" *ngIf="isFilterByPrice">-</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="to">To</label>
-                <input type="number" id="to" class="form-control" >
+            <div class="filter-body" *ngIf="isFilterByPrice">
+                <button class="btn btn-sm clear-filter">
+                    <span style>clear</span>
+                </button> 
+                <br />
+
+                <div class="form-group">
+                    <label for="from">Range from:</label>
+                    <input type="number" id="from" class="form-control" (click)="updateFromRange()">
+                </div>
+    
+                <div class="form-group">
+                    <label for="to">Range to:</label>
+                    <input type="number" id="to" class="form-control" (click)="updateToRange()">
+                </div>                     
             </div>
-            <br />
-            <button class="btn btn-primary btn-block btn-sm">Filter by Price</button>
-        </form>
+        </div>
+
+        <div class="filter category-filter">
+            <div class="filter-head">
+                <div class="row" style="background: gray;">
+                    <button type="button"  class="price-flt" (click)="filterByCategory()">
+                        <span>&emsp;Category</span>
+                        <span class="expand-filter" *ngIf="!isFilterByCategory">+</span>
+                        <span class="expand-filter" *ngIf="isFilterByCategory">-</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-body" *ngIf="isFilterByCategory">
+                <button class="btn btn-sm clear-filter">
+                    <span style>clear</span>
+                </button>
+                <br />
+
+                <div class="form-group">
+                    <div *ngIf="categories.length > 0">
+                        <div *ngFor="let category of categories">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="category" (click)="updateCategory(category)">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                {{category.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="categories.length === 0">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="0" id="flexCheckDefault" checked disabled>
+                            <label class="form-check-label" for="flexCheckDefault">
+                              All Categories
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <button type="button" class="btn btn-primary btn-sm apply-changes">Apply Changes</button>
+        <button type="button" class="btn btn-default btn-sm clear-changes">Clear Changes</button>
     </div>
 </div>

@@ -1,0 +1,46 @@
+.price-flt{
+    border: 2px solid white;
+    font-size: large;
+    padding: 1vh;
+    font-size: medium;
+    font-weight: 600;
+    text-align: left;
+    border-radius: 1vh;
+}
+
+.expand-filter{
+    float: right;
+}
+
+.filter{
+    margin-bottom: 1.5vh;
+}
+
+.apply-changes{
+    float: right;
+    margin-left: 1vh;
+    font-weight: 600;
+    border-radius: 0.8vh;
+}
+
+.clear-filter{
+    background: lightgray;
+    max-height: 3.5vh;
+    max-width: 10vh;
+    margin: 0 5;
+    color: black;
+    float: right;
+    font-size: 15px;
+    padding: 0px 0px;
+    padding: revert;
+    font-weight: 600;
+}
+
+.clear-changes{
+    border: 1px solid black;
+    float: right;
+    vertical-align: auto;
+    margin-left: 1vh;
+    font-weight: 600;
+    border-radius: 0.8vh;
+}
