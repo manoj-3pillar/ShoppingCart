@@ -1,5 +1,5 @@
 <div class="card shadow-sm product-item">
-    <img class="bd-placeholder-img card-img-top" width="100%" [src]="productItem.imageUrl" />
+    <img class="bd-placeholder-img card-img-top" height="320vh" [src]="productItem.imageUrl.length > 0 ? productItem.imageUrl : DEFAULT_IMG" />
 
     <div class="card-body">
         <h2>{{productItem.name}}</h2>

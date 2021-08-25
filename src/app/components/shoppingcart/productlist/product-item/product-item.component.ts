@@ -11,7 +11,8 @@ import { Product } from 'src/app/models/product';
 export class ProductItemComponent implements OnInit {
 
   @Input()
-  productItem!: Product;z =1;
+  productItem!: Product;
+  DEFAULT_IMG: string = './../../../../../assets/imgs/default.jpg';
 
   constructor(private router: Router) {}
 
