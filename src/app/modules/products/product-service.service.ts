@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { ProductCategory } from 'src/app/models/enums/category-enum';
 import Products from 'src/app/data/products.json';
+import Categories from 'src/app/data/categories.json';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class ProductService {
 
   products : Product[] = [];
   categories : Category[] = [];
+  categoryEnumArray = Object.keys(ProductCategory);
 
   constructor() { 
     this.initializeData();
@@ -37,24 +39,19 @@ export class ProductService {
 
       this.products.push(newProduct)
     });
-    
-    // [
-    //   new Product(1, "Product 1", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 120, "rubikscube.jpg", ProductCategory.Electronics),
-    //   new Product(2, "Product 2", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 130, "", ProductCategory.Clothing),
-    //   new Product(3, "Product 3", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 140, "", ProductCategory.Books),
-    //   new Product(4, "Product 4", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 150, "", ProductCategory.Electronics),
-    //   new Product(5, "Product 5", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 160, "", ProductCategory.Clothing),
-    //   new Product(6, "Product 6", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 170, "", ProductCategory.Books),
-    //   new Product(7, "Product 7", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 180, "", ProductCategory.Electronics),
-    //   new Product(8, "Product 8", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 190, "", ProductCategory.Clothing),
-    //   new Product(9, "Product 9", "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 200, "", ProductCategory.Books)
-    // ];
 
-    this.categories = [
-      new Category(1, "Electronics"),
-      new Category(2, "Clothing"),
-      new Category(3, "Books"),
-      new Category(4, "Others")
-    ];
+    Categories.forEach(category => {
+      let newCategory: Category = new Category(
+        category.id,
+        category.name
+        );
+
+      this.categories.push(newCategory)
+    });
+
+    // MOVE THIS TO TEST  FILE: A TEST TO ENSURE CATEGORY ENUM IS IN SYNC WITH CATEGORIES.JSON
+    if(this.categories.length !== ((this.categoryEnumArray.length/2)-1)){
+      alert("Category Enum and json files are not is sync");
+    }
   }
 }
