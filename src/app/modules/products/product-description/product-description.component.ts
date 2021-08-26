@@ -14,7 +14,7 @@ export class ProductDescriptionComponent implements OnInit {
 
     productID: any;
     productData: Product = new Product(99, "Dummy Product", "Dummy Desc", 0, "DummyUrl", ProductCategory.Electronics);
-    IMG_FOLDER_PATH: string = 'app/../assets/imgs/';
+    IMG_FOLDER_PATH: string = DEFS.IMG_FOLDER_PATH;
     DEFAULT_IMG: string = this.IMG_FOLDER_PATH + DEFS.DEFAULT_IMG;
     DEFAULT_ALT_TEXT: string = DEFS.DEFAULT_ALT_TEXT;
 

@@ -1,4 +1,5 @@
 {
+    "IMG_FOLDER_PATH" : "app/../assets/imgs/",
     "DEFAULT_IMG" : "default.jpg",
     "DEFAULT_ALT_TEXT" : "Default Image",
     "PAGE_SIZE" : 9

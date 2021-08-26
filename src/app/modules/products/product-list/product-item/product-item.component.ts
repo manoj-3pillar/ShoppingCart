@@ -12,7 +12,7 @@ export class ProductItemComponent implements OnInit {
 
   @Input()
   productItem!: Product;
-  IMG_FOLDER_PATH: string = 'app/../assets/imgs/';
+  IMG_FOLDER_PATH: string = DEFS.IMG_FOLDER_PATH;
   DEFAULT_IMG: string = this.IMG_FOLDER_PATH + DEFS.DEFAULT_IMG;
   DEFAULT_ALT_TEXT: string = DEFS.DEFAULT_ALT_TEXT;
 
