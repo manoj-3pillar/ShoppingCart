@@ -14,7 +14,8 @@ export class ProductDescriptionComponent implements OnInit {
 
     productID: any;
     productData: Product = new Product(99, "Dummy Product", "Dummy Desc", 0, "DummyUrl", ProductCategory.Electronics);
-    DEFAULT_IMG: string = DEFS.DEFAULT_IMG;
+    IMG_FOLDER_PATH: string = 'app/../assets/imgs/';
+    DEFAULT_IMG: string = this.IMG_FOLDER_PATH + DEFS.DEFAULT_IMG;
     DEFAULT_ALT_TEXT: string = DEFS.DEFAULT_ALT_TEXT;
 
     constructor(
@@ -25,6 +26,9 @@ export class ProductDescriptionComponent implements OnInit {
     ngOnInit(){
         this.productID = this.actRoute.snapshot.params['id'];
         this.loadProductDetails(this.productID);
+        if(this.productData.imageUrl !== "" && !this.productData.imageUrl.includes('/')){
+          this.productData.imageUrl = this.IMG_FOLDER_PATH + this.productData.imageUrl;
+        }
     }
 
     loadProductDetails(productID : number){

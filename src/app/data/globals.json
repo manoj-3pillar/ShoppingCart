@@ -1,4 +1,5 @@
 {
-    "DEFAULT_IMG" : "app/../assets/imgs/default.jpg",
-    "DEFAULT_ALT_TEXT" : "Default Image"
+    "DEFAULT_IMG" : "default.jpg",
+    "DEFAULT_ALT_TEXT" : "Default Image",
+    "PAGE_SIZE" : 9
 }

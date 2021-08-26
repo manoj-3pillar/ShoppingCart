@@ -1,7 +1,7 @@
 <div class="test">
     <div class="flex-container p-5">
         <div class="productImage">
-            <img class="LapImage" src="productData.imageUrl.length > 0 ? productData.imageUrl : DEFAULT_IMG" [alt]="productData.imageUrl.length > 0 ? productData.imageUrl : DEFAULT_ALT_TEXT">
+            <img class="LapImage" [src]="productData.imageUrl.length > 0 ? productData.imageUrl : DEFAULT_IMG" [alt]="productData.imageUrl.length > 0 ? productData.imageUrl : DEFAULT_ALT_TEXT">
         </div>
         <div class="productDetails">
             <h3 class="ProdName">{{productData.name}}</h3>
