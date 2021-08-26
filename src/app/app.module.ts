@@ -10,8 +10,8 @@ import { CartComponent } from './components/shoppingcart/cart/cart.component';
 import { CartItemComponent } from './components/shoppingcart/cart/cart-item/cart-item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CheckoutComponent } from './components/shoppingcart/checkout/checkout.component';
 import { ProductsModule } from './modules/products/products.module';
+import { OrderHistoryModule } from './modules/order-history/order-history.module';
 
 
 @NgModule({
@@ -22,14 +22,14 @@ import { ProductsModule } from './modules/products/products.module';
     NavComponent,
     ShoppingcartComponent,
     CartComponent,
-    CartItemComponent,
-    CheckoutComponent
+    CartItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ProductsModule
+    ProductsModule,
+    OrderHistoryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
