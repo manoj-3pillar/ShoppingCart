@@ -1,4 +1,4 @@
-export class Student {  
+export class OrderDetail {  
     constructor(  
         public name: string,  
         public email: string,  
