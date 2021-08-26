@@ -5,7 +5,7 @@
     border: 1px solid rgba(0,0,0,.125);
     background-color: #fff;
     margin-bottom: 2.5%;
-    width: 50%;
+    width: 75%;
 }
 
 .productImage{
@@ -23,7 +23,9 @@
 .test{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    height: fit-content;
+    width: fit-content;
 }
 
 .ProdName{
@@ -32,6 +34,6 @@
 }
 
 .addToCartBtn{
-     width: 90%;
-     margin-top: 5%;
+     width: 100%;
+     margin-top: 12%;
 }

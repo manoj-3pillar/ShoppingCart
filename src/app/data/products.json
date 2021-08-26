@@ -2,7 +2,7 @@
     {
         "id": 1, 
         "name": "Product 1", 
-        "description": "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.", 
+        "description": "This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod Test Prod ", 
         "price": 110, 
         "imageUrl": "rubikscube.jpg", 
         "category": 1
