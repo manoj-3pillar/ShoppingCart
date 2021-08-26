@@ -1,0 +1,14 @@
+<div class="test">
+    <div class="flex-container p-5">
+        <div class="productImage">
+            <img class="LapImage" src="productData.imageUrl.length > 0 ? productData.imageUrl : DEFAULT_IMG" [alt]="productData.imageUrl.length > 0 ? productData.imageUrl : DEFAULT_ALT_TEXT">
+        </div>
+        <div class="productDetails">
+            <h3 class="ProdName">{{productData.name}}</h3>
+            <p class="prodDesc">{{productData.description}}</p>
+            <small class="text-muted"><strong>{{ productData.price | currency:'INR'}}</strong></small>
+            
+            <button type="button" class="btn btn-sm btn-primary addToCartBtn">Add to Cart</button>
+        </div> 
+    </div>
+</div>

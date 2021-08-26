@@ -1,13 +1,13 @@
-import { ProductService } from 'src/app/services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
+import { ProductService } from '../product-service.service';
 
 @Component({
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.scss']
+  selector: 'app-product-filter',
+  templateUrl: './product-filter.component.html',
+  styleUrls: ['./product-filter.component.scss']
 })
-export class FilterComponent implements OnInit {
+export class ProductFilterComponent implements OnInit {
 
   isFilterByPrice: boolean = false;
   isFilterByCategory: boolean = false;

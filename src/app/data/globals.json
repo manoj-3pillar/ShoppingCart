@@ -1,0 +1,4 @@
+{
+    "DEFAULT_IMG" : "app/../assets/imgs/default.jpg",
+    "DEFAULT_ALT_TEXT" : "Default Image"
+}
