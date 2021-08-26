@@ -1,7 +1,7 @@
-import { ProductCategory } from './../../../../models/enums/category-enum';
-import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import DEFS from 'src/app/data/globals.json';
 
 @Component({
   selector: 'app-product-item',
@@ -12,7 +12,8 @@ export class ProductItemComponent implements OnInit {
 
   @Input()
   productItem!: Product;
-  DEFAULT_IMG: string = './../../../../../assets/imgs/default.jpg';
+  DEFAULT_IMG: string = DEFS.DEFAULT_IMG;
+  DEFAULT_ALT_TEXT: string = DEFS.DEFAULT_ALT_TEXT;
 
   constructor(private router: Router) {}
 
@@ -22,5 +23,4 @@ export class ProductItemComponent implements OnInit {
  getProductDesc(id: number): void{
     this.router.navigate(['/product/'+id]);
   }
-
 }

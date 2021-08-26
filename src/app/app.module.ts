@@ -6,15 +6,12 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { NavComponent } from './components/shared/nav/nav.component';
 import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.component';
-import { FilterComponent } from './components/shoppingcart/filter/filter.component';
-import { ProductlistComponent } from './components/shoppingcart/productlist/productlist.component';
 import { CartComponent } from './components/shoppingcart/cart/cart.component';
 import { CartItemComponent } from './components/shoppingcart/cart/cart-item/cart-item.component';
-import { ProductItemComponent } from './components/shoppingcart/productlist/product-item/product-item.component';
-import { ProductComponent } from './components/shoppingcart/productdescription/productdesc.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CheckoutComponent } from './components/shoppingcart/checkout/checkout.component';
+import { ProductsModule } from './modules/products/products.module';
 
 
 @NgModule({
@@ -24,18 +21,15 @@ import { CheckoutComponent } from './components/shoppingcart/checkout/checkout.c
     FooterComponent,
     NavComponent,
     ShoppingcartComponent,
-    FilterComponent,
-    ProductlistComponent,
     CartComponent,
     CartItemComponent,
-    ProductItemComponent,
-    ProductComponent,
     CheckoutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
