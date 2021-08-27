@@ -35,6 +35,7 @@
                 <select id="inputCountry" class="form-select">
                 <option selected>Choose...</option>
                 <option>...</option>
+                <option *ngFor="let country of countries">{{country}}</option>
                 </select>
             </div>
         
@@ -43,6 +44,7 @@
                 <select id="inputState" class="form-select">
                 <option selected>Choose...</option>
                 <option>...</option>
+                <option *ngFor="let state of states">{{state}}</option>
                 </select>
             </div>
         
