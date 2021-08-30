@@ -3,5 +3,4 @@ export enum State{
     Maharashtra=1,
     UP=2,
     HP=3,
-    Brampton=4
 }
