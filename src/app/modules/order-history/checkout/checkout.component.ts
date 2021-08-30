@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Country } from "src/app/models/enums/country-enum";
 import { State } from "src/app/models/enums/state-enum";
+import { OrderDetail } from "src/app/models/orderDetails";
 
 @Component({
     selector: 'prod-checkout',
@@ -12,6 +13,9 @@ export class CheckoutComponent implements OnInit{
     countryEnums = Country;
     states: string[] = [];
     countries: string[] = [];
+    selectedValue: string = "Choose.."
+    orderDetail: OrderDetail = new OrderDetail("", "", "", "", "", "", "");
+
     ngOnInit(): void {
         for(var stateEnum in this.statesEnums){
             var isValueProperty = parseInt(stateEnum, 10) >= 0
@@ -27,5 +31,11 @@ export class CheckoutComponent implements OnInit{
                 this.countries.push(country);
             }
         }
+        this.orderDetail = new OrderDetail("", "", "", "", "", "", "");
+    }
+
+    placeOrder(orderDetail: OrderDetail){
+        //   var firstName = orderDetail.firstName;
+        //   var state = orderDetail.state;
     }
 }
