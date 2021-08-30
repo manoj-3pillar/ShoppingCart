@@ -62,10 +62,10 @@
         
             <div class="col-md-2">
                 <label for="inputZip" class="form-label">Zip*</label>
-                <input type="text" required pattern="/^[0-9]{1,5}$/" 
+                <input type="text" required pattern="[0-9]{1,100}" 
                 ngModel name="zipEntered" #zipEntered="ngModel" class="form-control" id="inputZip">
                 <div class="alert alert-danger" *ngIf="zipEntered.touched && !zipEntered.valid">
-                    <div *ngIf="zipEntered.errors?.required">Zip is required</div>
+                    <div *ngIf="zipEntered.errors?.required">Zip is required!!</div>
                     <div *ngIf="zipEntered.errors?.pattern">Zip should be in numbers only!!</div>
                     <div></div>
                 </div>
