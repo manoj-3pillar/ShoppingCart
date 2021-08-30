@@ -11,3 +11,9 @@
 .card-img-top{
     vertical-align: middle;
 }
+
+.card-text{
+    max-height: 100px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
