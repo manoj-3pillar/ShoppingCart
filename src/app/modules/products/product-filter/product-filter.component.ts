@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Filter } from './../../../models/filter';
+import { Component, OnInit, Input } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { ProductService } from '../product-service.service';
 
@@ -42,28 +43,29 @@ export class ProductFilterComponent implements OnInit {
     }
   }
 
-  updateFromRange(): void {
-    console.log(this.fromRange)
+  updateFromRange(event: any): void {
+    this.fromRange = parseInt(event.target.value);
   }
 
-  updateToRange(): void {
-    console.log(this.toRange)
-  }
-
-  clear(filterType: string = 'Default'): void {
-    if(filterType === "Category"){
-      this.selectedCategories = [];
-      this.isFilterByCategory = false;
-    }
-    else if(filterType === "Price"){
-      
-      this.isFilterByPrice = false;
+  updateToRange(event: any): void {
+    if(event.target.value < this.fromRange){
+      this.toRange = this.fromRange;
     }
     else{
-      this.selectedCategories = [];
-
-      this.isFilterByPrice = false;
-      this.isFilterByCategory = false;
+      this.toRange = parseInt(event.target.value);
     }
+  }
+
+  clear(): void {
+    this.selectedCategories = [];
+    this.fromRange = 0;
+    this.toRange = 0;
+    this.isFilterByPrice = false;
+    this.isFilterByCategory = false;
+  }
+
+  applyChanges(): Filter {
+    let result = new Filter(this.fromRange, this.toRange, this.selectedCategories);
+    return result;
   }
 }

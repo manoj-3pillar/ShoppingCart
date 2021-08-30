@@ -1,10 +1,17 @@
 <div class="row">
     <div class="col-md-3">
         <app-product-filter></app-product-filter>
+    
+        <hr />
+        <div class="row filter-buttons">
+            <button type="button" class="btn btn-default btn-sm clear-changes col-md-5" (click)="clear()">Clear Changes</button>
+            <button type="button" class="btn btn-primary btn-sm apply-changes col-md-6" (click)="apply()">Apply Changes</button>
+        </div>
+    
         <app-cart></app-cart>
     </div>
 
     <div class="col-md-9">
-        <app-product-list></app-product-list>
+        <app-product-list [filterValue]="filterValue"></app-product-list>
     </div>
 </div>
