@@ -1,10 +1,11 @@
 export class OrderDetail {  
     constructor(  
-        public name: string,  
+        public firstName: string,
+        public lastName: string,  
         public email: string,  
         public address: string,  
-        public country: number,
-        public state: number,
+        public country: string,
+        public state: string,
         public zip: string
     ){}  
 }  

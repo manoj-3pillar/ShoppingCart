@@ -5,3 +5,11 @@
 .placeOrderBtn{
     width: 100%;
 }
+
+.form-control.ng-touched.ng-invalid{
+    border: 2px solid red;
+}
+
+.form-select.ng-touched.ng-invalid{
+    border: 2px solid red;
+}
