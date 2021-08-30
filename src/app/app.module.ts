@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './modules/products/products.module';
 import { OrderHistoryModule } from './modules/order-history/order-history.module';
+import { ProductSearchComponent } from './modules/products/product-search/product-search.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,14 +24,16 @@ import { OrderHistoryModule } from './modules/order-history/order-history.module
     NavComponent,
     ShoppingcartComponent,
     CartComponent,
-    CartItemComponent
+    CartItemComponent,
+    ProductSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ProductsModule,
-    OrderHistoryModule
+    OrderHistoryModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
