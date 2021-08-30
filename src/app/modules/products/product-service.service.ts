@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product';
 import { ProductCategory } from 'src/app/models/enums/category-enum';
 import Products from 'src/app/data/products.json';
 import Categories from 'src/app/data/categories.json';
+import { OrderDetail } from 'src/app/models/orderDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,9 @@ export class ProductService {
 
   getProductCategories(): Category[] {
     return this.categories;
+  }
+
+  placeOrder(orderDetail: OrderDetail){
   }
 
   private initializeData(): void {

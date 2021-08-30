@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Country } from "src/app/models/enums/country-enum";
 import { State } from "src/app/models/enums/state-enum";
 import { OrderDetail } from "src/app/models/orderDetails";
+import { ProductService } from "../../products/product-service.service";
 
 @Component({
     selector: 'prod-checkout',
@@ -14,7 +15,12 @@ export class CheckoutComponent implements OnInit{
     states: string[] = [];
     countries: string[] = [];
     selectedValue: string = "Choose.."
-    orderDetail: OrderDetail = new OrderDetail("", "", "", "", "", "", "");
+    orderDetail: OrderDetail = new OrderDetail("", "", "", "", "", "", "", "");
+    formFieldsValid: boolean = true;
+
+    constructor(
+        private productService: ProductService
+    ){}
 
     ngOnInit(): void {
         for(var stateEnum in this.statesEnums){
@@ -31,11 +37,29 @@ export class CheckoutComponent implements OnInit{
                 this.countries.push(country);
             }
         }
-        this.orderDetail = new OrderDetail("", "", "", "", "", "", "");
+        this.orderDetail = new OrderDetail("", "", "", "", "", "", "", "");
     }
 
     placeOrder(orderDetail: OrderDetail){
-        //   var firstName = orderDetail.firstName;
-        //   var state = orderDetail.state;
+        if(orderDetail.firstName === "" || orderDetail.lastName === "" 
+        || orderDetail.email === "" || orderDetail.address === ""
+        || orderDetail.country === "" || orderDetail.state === ""
+        || orderDetail.zip === ""){
+            this.formFieldsValid = false;
+            alert("One or more fields are empty!!");
+        }
+        else{
+            if(!orderDetail.email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")){
+                this.formFieldsValid = false;
+                alert("Email is invalid!!");
+            }
+            if(!orderDetail.zip.match("[0-9]{1,100}")){
+                this.formFieldsValid = false;
+                alert("Zip Code is invalid!!");
+            }
+            if(this.formFieldsValid){
+                this.productService.placeOrder(orderDetail);
+            }
+        }
     }
 }
