@@ -16,7 +16,6 @@ export class CheckoutComponent implements OnInit{
     countries: string[] = [];
     selectedValue: string = "Choose.."
     orderDetail: OrderDetail = new OrderDetail("", "", "", "", "", "", "", "");
-    formFieldsValid: boolean = true;
 
     constructor(
         private productService: ProductService
@@ -37,29 +36,10 @@ export class CheckoutComponent implements OnInit{
                 this.countries.push(country);
             }
         }
-        this.orderDetail = new OrderDetail("", "", "", "", "", "Choose Country", "Choose State", "");
+        this.orderDetail = new OrderDetail("", "", "", "", "", null, null, "");
     }
 
     placeOrder(orderDetail: OrderDetail){
-        if(orderDetail.firstName === "" || orderDetail.lastName === "" 
-        || orderDetail.email === "" || orderDetail.address === ""
-        || orderDetail.country === "Choose Country" || orderDetail.state === "Choose State"
-        || orderDetail.zip === ""){
-            this.formFieldsValid = false;
-            alert("One or more fields are empty!!");
-        }
-        else{
-            if(!orderDetail.email.match("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")){
-                this.formFieldsValid = false;
-                alert("Email is invalid!!");
-            }
-            if(!orderDetail.zip.match("[0-9]{1,100}")){
-                this.formFieldsValid = false;
-                alert("Zip Code is invalid!!");
-            }
-            if(this.formFieldsValid){
-                this.productService.placeOrder(orderDetail);
-            }
-        }
+          this.productService.placeOrder(orderDetail);
     }
 }
