@@ -47,18 +47,20 @@
                 <label for="inputCountry" class="form-label">Country*</label>
                 <select id="inputCountry" required [(ngModel)]="orderDetail.country" 
                 name="countrySelected" #countrySelected="ngModel" class="form-select">
+                <option selected disabled *ngIf="orderDetail.country=='Choose Country'">{{orderDetail.country}}</option>
                 <option *ngFor="let country of countries">{{country}}</option>
                 </select>
-                <div class="alert alert-danger" *ngIf="countrySelected.touched && !countrySelected.valid">Country is required!!</div>
+                <div class="alert alert-danger" *ngIf="countrySelected.touched && orderDetail.country == 'Choose Country'">Country is required!!</div>
             </div>
         
             <div class="col-md-4">
                 <label for="inputState" class="form-label">State*</label>
                 <select id="inputState" required [(ngModel)]="orderDetail.state" 
                 name="stateSelected" #stateSelected="ngModel" class="form-select">
+                <option selected disabled *ngIf="orderDetail.state=='Choose State'">{{orderDetail.state}}</option>
                 <option *ngFor="let state of states">{{state}}</option>
                 </select>
-                <div class="alert alert-danger" *ngIf="stateSelected.touched && !stateSelected.valid">State is required!!</div>
+                <div class="alert alert-danger" *ngIf="stateSelected.touched && orderDetail.state == 'Choose State'">State is required!!</div>
             </div>
         
             <div class="col-md-2">

@@ -37,13 +37,13 @@ export class CheckoutComponent implements OnInit{
                 this.countries.push(country);
             }
         }
-        this.orderDetail = new OrderDetail("", "", "", "", "", "", "", "");
+        this.orderDetail = new OrderDetail("", "", "", "", "", "Choose Country", "Choose State", "");
     }
 
     placeOrder(orderDetail: OrderDetail){
         if(orderDetail.firstName === "" || orderDetail.lastName === "" 
         || orderDetail.email === "" || orderDetail.address === ""
-        || orderDetail.country === "" || orderDetail.state === ""
+        || orderDetail.country === "Choose Country" || orderDetail.state === "Choose State"
         || orderDetail.zip === ""){
             this.formFieldsValid = false;
             alert("One or more fields are empty!!");
