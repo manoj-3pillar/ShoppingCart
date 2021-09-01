@@ -4,6 +4,6 @@
             <strong class="mb-1">{{cartItem.productName}}</strong>
             <small class="text-muted">Qty : {{cartItem.qty}}</small>
         </div>
-        <div class="col-10 mb-1 x-small">{{cartItem.price | currency:'INR'}}</div>
+        <div class="col-10 mb-1 x-small">{{cartItem.price | currency:'INR'}} * {{cartItem.qty}} = {{ cartItem.price * cartItem.qty | currency:'INR'}}</div>
     </a>
 </div>

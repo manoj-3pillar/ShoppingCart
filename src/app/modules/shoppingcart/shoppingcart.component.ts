@@ -1,4 +1,4 @@
-import { ProductFilterComponent } from './../../modules/products/product-filter/product-filter.component';
+import { ProductFilterComponent } from '../products/product-filter/product-filter.component';
 import { Component, OnInit, ViewChild, Output } from '@angular/core';
 import { Filter } from 'src/app/models/filter';
 
