@@ -15,8 +15,8 @@ export class OrderDetail {
         email: string,
          address: string,  
          address2: string,
-         country: string,
-         state: string,
+         country: string | null,
+         state: string | null,
          zip: string
     ){
         this.firstName = firstName;

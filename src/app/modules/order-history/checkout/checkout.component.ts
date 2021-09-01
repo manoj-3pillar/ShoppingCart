@@ -37,7 +37,7 @@ export class CheckoutComponent implements OnInit{
                 this.countries.push(country);
             }
         }
-        this.orderDetail = new OrderDetail("", "", "", "", "", "Choose Country", "Choose State", "");
+        this.orderDetail = new OrderDetail("", "", "", "", "", null, null, "");
     }
 
     placeOrder(orderDetail: OrderDetail){
