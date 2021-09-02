@@ -1,24 +1,34 @@
 import { NgModule, Input } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDescriptionComponent } from './product-description/product-description.component';
-import { ProductItemComponent } from './product-list/product-item/product-item.component';
-import { ProductFilterComponent } from './product-filter/product-filter.component';
+import { ProductListComponent } from 'src/app/modules/products/product-list/product-list.component';
+import { ProductDescriptionComponent } from 'src/app/modules/products/product-description/product-description.component';
+import { ProductItemComponent } from 'src/app/modules/products/product-list/product-item/product-item.component';
+import { ProductFilterComponent } from 'src/app/modules/products/product-filter/product-filter.component';
+import { ProductSearchComponent } from 'src/app/modules/products/product-search/product-search.component';
+import { MessengerService } from 'src/app/modules/messenger.service';
 
 @NgModule({
   declarations: [
+    ProductItemComponent,
     ProductListComponent,
     ProductDescriptionComponent,
-    ProductItemComponent,
-    ProductFilterComponent
+    ProductFilterComponent,
+    ProductSearchComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
+  ],
+  providers: [
+    MessengerService
   ],
   exports: [
-    ProductFilterComponent,
+    ProductItemComponent,
     ProductListComponent,
-    ProductDescriptionComponent
+    ProductDescriptionComponent,
+    ProductFilterComponent,
+    ProductSearchComponent,
   ]
 })
 export class ProductsModule {

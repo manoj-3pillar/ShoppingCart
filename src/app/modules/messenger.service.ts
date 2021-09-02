@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,11 @@ export class MessengerService {
 
   constructor() { }
 
-  sendMsg() {
-    this.subject.next() // triggering an event
+  sendMsg(product: Product) {
+    this.subject.next(product) // triggering an event
   }
 
   getMsg() {
-    this.subject.asObservable()
+    return this.subject.asObservable()
   }
 }

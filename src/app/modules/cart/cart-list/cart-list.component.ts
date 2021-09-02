@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartItem } from 'src/app/models/cart-item';
+import { Product } from 'src/app/models/product';
+import { MessengerService } from '../../messenger.service';
 
 @Component({
   selector: 'app-cart-list',
@@ -8,28 +11,45 @@ import { Router } from '@angular/router';
 })
 export class CartListComponent implements OnInit {
 
-  cartItems = [
-    { id:1, productId:1, productName: "product Nmae 1", qty:2, price:120 },
-    { id:4, productId:4, productName: "product Nmae 4", qty:1, price:130 },
-    { id:3, productId:3, productName: "product Nmae 3", qty:3, price:140 },
-    { id:2, productId:2, productName: "product Nmae 2", qty:5, price:150 }
-  ];
+  cartItems: CartItem[] = [];
 
-  cartTotal = 0;
-  totalQty = 0;
+  cartTotal = 0;  
+  cartId: number = 0;
+  qtyTotal = 0;
   isUserLogin: boolean = true;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private msg: MessengerService) { }
 
-  ngOnInit(): void {
-    this.cartItems.forEach(item => {
-      this.cartTotal += (item.qty * item.price),
-      this.totalQty += item.qty
+  ngOnInit() {
+    this.msg.getMsg().subscribe((product: any) => {
+      this.addProductToCart(product)
     })
+  }
+
+  addProductToCart(product: Product) {
+    let productExist = false;
+
+    for(let i in this.cartItems){
+      if(this.cartItems[i].productId === product.id) {
+        this.cartItems[i].qty++;
+        productExist = true;
+        break;
+      }
+    }
+
+    if(!productExist) {
+      this.cartItems.push(new CartItem(0, product));
+    }
+
+    this.cartTotal = 0;
+    this.qtyTotal = 0;
+    this.cartItems.forEach(item => {
+      this.cartTotal += (item.qty * item.price);
+      this.qtyTotal += item.qty;
+    });
   }
 
   proceedToCheckout(): void{
     if(this.isUserLogin)
         this.router.navigate(['/checkout']);
   }
-
 }

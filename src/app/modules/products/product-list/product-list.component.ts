@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
   @Input() filterValue : Filter = new Filter(0, 0, []);
   productList: Product[] = []
 
-  constructor(private productService : ProductService,private route:ActivatedRoute) { 
+  constructor(private productService : ProductService, private route:ActivatedRoute) { 
   }
 
   ngOnInit(): void {

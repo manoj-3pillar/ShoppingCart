@@ -8,7 +8,6 @@ import { ShoppingcartComponent } from './modules/shoppingcart/shoppingcart.compo
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './modules/products/products.module';
-import { ProductSearchComponent } from './modules/products/product-search/product-search.component';
 import { OrderHistoryModule } from './modules/order-history/order-history.module';
 import { CartModule } from './modules/cart/cart.module';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +20,6 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     NavComponent,
     ShoppingcartComponent,
-    ProductSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     ProductsModule,
     OrderHistoryModule,
     CartModule,
-    FormsModule
+    FormsModule    
   ],
   providers: [],
   bootstrap: [AppComponent]
