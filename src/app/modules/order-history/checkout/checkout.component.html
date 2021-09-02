@@ -1,6 +1,6 @@
 <div class="row">
     <!-- <div class="col-md-3">
-        <app-cart></app-cart>
+        <app-cart-list></app-cart-list>
     </div> -->
     <div class="col-md-7">
         <div class="mt-3"></div>
@@ -50,7 +50,7 @@
                 <option value="null" disabled *ngIf="orderDetail.country==null">Choose Country</option>
                 <option *ngFor="let country of countries">{{country}}</option>
                 </select>
-                <div class="alert alert-danger" *ngIf="countrySelected.touched && orderDetail.country == 'Choose Country'">Country is required!!</div>
+                <div class="alert alert-danger" *ngIf="countrySelected.touched && orderDetail.country == null">Country is required!!</div>
             </div>
         
             <div class="col-md-4">
@@ -60,7 +60,7 @@
                 <option value="null" disabled *ngIf="orderDetail.state==null">Choose State</option>
                 <option *ngFor="let state of states">{{state}}</option>
                 </select>
-                <div class="alert alert-danger" *ngIf="stateSelected.touched && orderDetail.state == 'Choose State'">State is required!!</div>
+                <div class="alert alert-danger" *ngIf="stateSelected.touched && orderDetail.state == null">State is required!!</div>
             </div>
         
             <div class="col-md-2">
@@ -76,7 +76,6 @@
             <div class="col-12">
                 <button type="submit" [disabled]="!orderForm.valid" class="btn btn-primary placeOrderBtn" (click)="placeOrder(orderDetail)">Place Order</button>
             </div>
-            <!-- <div class="alert alert-danger" *ngIf="!formFieldsValid">One or more fields are invalid or empty!!</div> -->
         </form>
     
     </div>
