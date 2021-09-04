@@ -12,6 +12,7 @@ export class NavComponent implements OnInit {
 
   CartItems = [];
   noOfItemsInCart = 0;
+  showOrderHistoryLink = false;
 
   constructor(private router: Router, private msgService: MessengerService, private cartservice : CartService) { }
 
@@ -19,6 +20,7 @@ export class NavComponent implements OnInit {
     this.msgService.getTotalCartItem().subscribe( no => {
       this.CartItems = this.cartservice.getCartItems(this.msgService.currentUser.userId.toString());
       this.noOfItemsInCart = this.CartItems.length;
+      this.showOrderHistoryLink = this.msgService.currentUser.isUserLoggedin;
     });
   }
 
@@ -26,6 +28,8 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
   viewOrderHistory(): void{
-    this.router.navigate(['/orders']);
+    if(this.msgService.currentUser.isUserLoggedin){
+      this.router.navigate(['/orders']);
+    }        
   }
 }
