@@ -3,6 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import DEFS from 'src/app/data/globals.json';
 import { MessengerService } from 'src/app/modules/messenger.service';
+import { ProductService } from '../../product-service.service';
+import { CartService } from 'src/app/modules/cart/cart-service.service';
 
 @Component({
   selector: 'app-product-item',
@@ -17,7 +19,7 @@ export class ProductItemComponent implements OnInit {
   DEFAULT_IMG: string = this.IMG_FOLDER_PATH + DEFS.DEFAULT_IMG;
   DEFAULT_ALT_TEXT: string = DEFS.DEFAULT_ALT_TEXT;
 
-  constructor(private router: Router, private msg: MessengerService) {}
+  constructor(private router: Router, private msg: MessengerService, private cartService: CartService) {}
 
   ngOnInit(): void {
     if(this.productItem.imageUrl !== "" && !this.productItem.imageUrl.includes('/')){
@@ -26,7 +28,7 @@ export class ProductItemComponent implements OnInit {
   }
 
   handleAddToCart(){
-    this.msg.sendMsg(this.productItem);
+    this.cartService.addToCart(this.productItem);
   }
 
  getProductDesc(id: number): void{

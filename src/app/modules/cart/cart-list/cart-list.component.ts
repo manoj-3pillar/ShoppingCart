@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartItem } from 'src/app/models/cart-item';
-import { Product } from 'src/app/models/product';
 import { MessengerService } from '../../messenger.service';
+import { CartService } from '../cart-service.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cart-list',
@@ -11,45 +12,32 @@ import { MessengerService } from '../../messenger.service';
 })
 export class CartListComponent implements OnInit {
 
-  cartItems: CartItem[] = [];
-
-  cartTotal = 0;  
-  cartId: number = 0;
-  qtyTotal = 0;
+  cartList: CartItem[] = [];
   isUserLogin: boolean = true;
-  constructor(private router: Router, private msg: MessengerService) { }
+  qtyTotal = 0;
+  cartTotal = 0;
+
+  constructor(private router: Router, private msgService: MessengerService, private cartService: CartService, private route:ActivatedRoute) { }
 
   ngOnInit() {
-    this.msg.getMsg().subscribe((product: any) => {
-      this.addProductToCart(product)
-    })
-  }
-
-  addProductToCart(product: Product) {
-    let productExist = false;
-
-    for(let i in this.cartItems){
-      if(this.cartItems[i].productId === product.id) {
-        this.cartItems[i].qty++;
-        productExist = true;
-        break;
-      }
-    }
-
-    if(!productExist) {
-      this.cartItems.push(new CartItem(0, product));
-    }
-
+    console.log(this.route.params);
+    this.route.params.subscribe(params => {      
+       this.cartList = this.cartService.getCartItems(this.msgService.currentUser.userId.toString());
+       this.getTotal();
+      });
+  } 
+  
+  getTotal() {
     this.cartTotal = 0;
     this.qtyTotal = 0;
-    this.cartItems.forEach(item => {
+    this.cartList.forEach(item => {
       this.cartTotal += (item.qty * item.price);
       this.qtyTotal += item.qty;
     });
   }
 
   proceedToCheckout(): void{
-    if(this.isUserLogin)
+    if(this.msgService.currentUser.isUserLoggedin)
         this.router.navigate(['/checkout']);
   }
 }

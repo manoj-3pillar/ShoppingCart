@@ -1,13 +1,13 @@
-<div class="card card-headers">
+<div class="card card-headers col-6">
     <div class="card-header">
         <strong>Cart Items</strong>
     </div>
     <div class="card-body" >
-        <div *ngIf="cartItems.length == 0" class="alert alert-info">No Items Added!</div>
+        <div *ngIf="cartList.length == 0" class="alert alert-info">No Items Added!</div>
     </div>
-    <div class="card-body" *ngIf="cartItems.length > 0">
-        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" *ngIf="cartItems.length > 0">           
-            <div class="list-group list-group-flush border-bottom scrollarea" *ngFor="let item of cartItems" >
+    <div class="card-body" *ngIf="cartList.length > 0">
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" *ngIf="cartList.length > 0">           
+            <div class="list-group list-group-flush border-bottom scrollarea" *ngFor="let item of cartList" >
                 <app-cart-item [cartItem]="item"></app-cart-item>
             </div>
             <a href="#" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">

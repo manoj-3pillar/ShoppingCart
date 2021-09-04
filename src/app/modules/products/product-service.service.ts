@@ -5,6 +5,7 @@ import { ProductCategory } from 'src/app/models/enums/category-enum';
 import Products from 'src/app/data/products.json';
 import Categories from 'src/app/data/categories.json';
 import { OrderDetail } from 'src/app/models/orderDetails';
+import { MessengerService } from '../messenger.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ProductService {
   categories : Category[] = [];
   categoryEnumArray = Object.keys(ProductCategory);
 
-  constructor() { 
+  constructor(private msgService: MessengerService) { 
     this.initializeData();
   }
 
