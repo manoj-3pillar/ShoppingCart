@@ -25,5 +25,7 @@ export class NavComponent implements OnInit {
   showCartItems(): void{
     this.router.navigate(['/cart']);
   }
-
+  viewOrderHistory(): void{
+    this.router.navigate(['/orders']);
+  }
 }

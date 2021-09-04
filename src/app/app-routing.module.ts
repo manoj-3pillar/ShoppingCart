@@ -5,6 +5,7 @@ import { ShoppingcartComponent } from "./modules/shoppingcart/shoppingcart.compo
 import { CheckoutComponent } from "./modules/order-history/checkout/checkout.component";
 import { ProductListComponent } from './modules/products/product-list/product-list.component';
 import { CartListComponent } from "./modules/cart/cart-list/cart-list.component";
+import { OrdersHistoryComponent } from "./modules/order-history/orders/orders.component";
 
 const appRoutes: Routes = [
     {path: 'product/:id', component: ProductDescriptionComponent},
@@ -12,6 +13,7 @@ const appRoutes: Routes = [
     {path: 'checkout', component: CheckoutComponent},
     {path: '', component: ShoppingcartComponent},
     {path: 'search/:search', component: ProductListComponent},
+    {path: 'orders', component: OrdersHistoryComponent}
 ];
 @NgModule({
     imports: [
