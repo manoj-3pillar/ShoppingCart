@@ -1,4 +1,6 @@
 import { StringMapWithRename } from "@angular/compiler/src/compiler_facade_interface";
+import { Guid } from "guid-typescript";
+import { CartItem } from "./cart-item";
 
 export class OrderDetail {  
     public firstName: string;
@@ -9,6 +11,8 @@ export class OrderDetail {
         public country: string | null;
         public state: string | null;
         public zip: string;
+        public cartItems: CartItem[] = [];
+        public userID!: Guid;
     constructor(  
         firstName: string, 
         lastName: string,

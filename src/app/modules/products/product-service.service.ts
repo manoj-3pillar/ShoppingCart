@@ -6,6 +6,7 @@ import Products from 'src/app/data/products.json';
 import Categories from 'src/app/data/categories.json';
 import { OrderDetail } from 'src/app/models/orderDetails';
 import { MessengerService } from '../messenger.service';
+import { CartService } from '../cart/cart-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ProductService {
   categories : Category[] = [];
   categoryEnumArray = Object.keys(ProductCategory);
 
-  constructor(private msgService: MessengerService) { 
+  constructor(private msgService: MessengerService, private cartService: CartService) { 
     this.initializeData();
   }
 
@@ -29,6 +30,10 @@ export class ProductService {
   }
 
   placeOrder(orderDetail: OrderDetail){
+    orderDetail.userID = this.msgService.currentUser.userId;
+    orderDetail.cartItems = this.cartService.getCartItems(orderDetail.userID.toString());
+    localStorage.setItem('order'+orderDetail.userID, JSON.stringify(orderDetail));
+    localStorage.removeItem('cart' + orderDetail.userID.toString());
   }
 
   private initializeData(): void {

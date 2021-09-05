@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Country } from "src/app/models/enums/country-enum";
 import { State } from "src/app/models/enums/state-enum";
 import { OrderDetail } from "src/app/models/orderDetails";
@@ -16,9 +17,11 @@ export class CheckoutComponent implements OnInit{
     countries: string[] = [];
     selectedValue: string = "Choose.."
     orderDetail: OrderDetail = new OrderDetail("", "", "", "", "", "", "", "");
+    orderPlaced: boolean = false;
 
     constructor(
-        private productService: ProductService
+        private productService: ProductService,
+        private router: Router
     ){}
 
     ngOnInit(): void {
@@ -41,5 +44,8 @@ export class CheckoutComponent implements OnInit{
 
     placeOrder(orderDetail: OrderDetail){
           this.productService.placeOrder(orderDetail);
+          this.orderPlaced = true;
+          alert('Order Placed Successfully');
+          this.router.navigate(['']);
     }
 }
