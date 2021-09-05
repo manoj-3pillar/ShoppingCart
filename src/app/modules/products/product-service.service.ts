@@ -36,6 +36,10 @@ export class ProductService {
     localStorage.removeItem('cart' + orderDetail.userID.toString());
   }
 
+  getOrderList(){
+    return JSON.parse(localStorage.getItem('order'+this.msgService.currentUser.userId.toString()) || '{}')
+  }
+
   private initializeData(): void {
     Products.forEach(product => {
       let newProduct: Product = new Product(
