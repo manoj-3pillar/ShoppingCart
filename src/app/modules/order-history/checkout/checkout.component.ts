@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { Country } from "src/app/models/enums/country-enum";
 import { State } from "src/app/models/enums/state-enum";
 import { OrderDetail } from "src/app/models/orderDetails";
+import { CartService } from "../../cart/cart-service.service";
+import { MessengerService } from "../../messenger.service";
 import { ProductService } from "../../products/product-service.service";
 
 @Component({
@@ -17,11 +19,13 @@ export class CheckoutComponent implements OnInit{
     countries: string[] = [];
     selectedValue: string = "Choose.."
     orderDetail: OrderDetail = new OrderDetail("", "", "", "", "", "", "", "");
-    orderPlaced: boolean = false;
+    orderPlaced: Boolean = false;
 
     constructor(
         private productService: ProductService,
-        private router: Router
+        private router: Router,
+        private msgService: MessengerService,
+        private cartService: CartService
     ){}
 
     ngOnInit(): void {
@@ -40,12 +44,22 @@ export class CheckoutComponent implements OnInit{
             }
         }
         this.orderDetail = new OrderDetail("", "", "", "", "", null, null, "");
+        this.orderDetail.userID = this.msgService.currentUser.userId;
+        this.orderDetail.cartItems = this.cartService.getCartItems(this.orderDetail.userID.toString());
+        if(Object.keys(this.orderDetail.cartItems).length === 0){
+            alert('Order cannot be placed!!');
+            this.router.navigate(['']);
+        }
     }
 
     placeOrder(orderDetail: OrderDetail){
-          this.productService.placeOrder(orderDetail);
-          this.orderPlaced = true;
+          this.orderPlaced = this.productService.placeOrder(orderDetail);
+          if(this.orderPlaced){
           alert('Order Placed Successfully');
+          }
+          else{
+            alert('Order cannot be placed!!');
+          }
           this.router.navigate(['']);
     }
 }

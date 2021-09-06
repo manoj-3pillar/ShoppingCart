@@ -30,10 +30,15 @@ export class ProductService {
     return this.categories;
   }
 
-  placeOrder(orderDetail: OrderDetail){
+  placeOrder(orderDetail: OrderDetail): Boolean{
+    try{
     orderDetail.userID = this.msgService.currentUser.userId;
     var previousOrders = JSON.parse(localStorage.getItem('orders' + this.msgService.currentUser.userId.toString()) || '{}');
     orderDetail.cartItems = this.cartService.getCartItems(orderDetail.userID.toString());
+
+    if(Object.keys(orderDetail.cartItems).length === 0){
+      return false;
+    }
 
     if(Object.keys(previousOrders).length != 0){
     this.ordersList.push(previousOrders);
@@ -42,6 +47,11 @@ export class ProductService {
     this.ordersList.push(orderDetail);
     localStorage.setItem('orders' + orderDetail.userID, JSON.stringify(this.ordersList));
     localStorage.removeItem('cart' + orderDetail.userID.toString());
+    return true;
+  }
+  catch(ex: unknown){
+      return false;
+  }
   }
 
   getOrderList(){
