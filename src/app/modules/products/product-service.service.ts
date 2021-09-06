@@ -16,6 +16,7 @@ export class ProductService {
   products : Product[] = [];
   categories : Category[] = [];
   categoryEnumArray = Object.keys(ProductCategory);
+  ordersList: OrderDetail[] = [];
 
   constructor(private msgService: MessengerService, private cartService: CartService) { 
     this.initializeData();
@@ -31,13 +32,20 @@ export class ProductService {
 
   placeOrder(orderDetail: OrderDetail){
     orderDetail.userID = this.msgService.currentUser.userId;
+    var previousOrders = JSON.parse(localStorage.getItem('orders' + this.msgService.currentUser.userId.toString()) || '{}');
     orderDetail.cartItems = this.cartService.getCartItems(orderDetail.userID.toString());
-    localStorage.setItem('order'+orderDetail.userID, JSON.stringify(orderDetail));
+
+    if(Object.keys(previousOrders).length != 0){
+    this.ordersList.push(previousOrders);
+    }
+    
+    this.ordersList.push(orderDetail);
+    localStorage.setItem('orders' + orderDetail.userID, JSON.stringify(this.ordersList));
     localStorage.removeItem('cart' + orderDetail.userID.toString());
   }
 
   getOrderList(){
-    return JSON.parse(localStorage.getItem('order'+this.msgService.currentUser.userId.toString()) || '{}')
+    return JSON.parse(localStorage.getItem('orders' + this.msgService.currentUser.userId.toString()) || '{}')
   }
 
   private initializeData(): void {
