@@ -25,7 +25,7 @@ export class NavComponent implements OnInit {
   }
 
   showCartItems(): void{
-    this.router.navigate(['/cart']);
+    this.router.navigate(['/checkout']);
   }
   viewOrderHistory(): void{
     if(this.msgService.currentUser.isUserLoggedin){

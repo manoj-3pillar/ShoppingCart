@@ -1,9 +1,9 @@
-<div class="card card-headers col-6">
+<div class="card card-headers">
     <div class="card-header">
         <strong>Cart Items</strong>
     </div>
     <div class="card-body" >
-        <div *ngIf="cartList.length == 0" class="alert alert-info">No Items Added!</div>
+        <div *ngIf="isCartEmpty" class="alert alert-info">No Items Added!</div>
     </div>
     <div class="card-body" *ngIf="cartList.length > 0">
         <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" *ngIf="cartList.length > 0">           
@@ -21,5 +21,5 @@
               </a>
         </div>
     </div>
-    <button type="button" class="btn btn-sm btn-primary right-mgn checkout-btn" [disabled]="isCartEmpty" (click)="proceedToCheckout()">Proceed to checkout</button>
+    <!-- <button type="button" class="btn btn-sm btn-primary right-mgn checkout-btn" [disabled]="isCartEmpty" (click)="proceedToCheckout()">Proceed to checkout</button> -->
 </div>

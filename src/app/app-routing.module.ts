@@ -9,7 +9,7 @@ import { OrdersHistoryComponent } from "./modules/order-history/orders/orders.co
 
 const appRoutes: Routes = [
     {path: 'product/:id', component: ProductDescriptionComponent},
-    {path:'cart', component: CartListComponent},
+    // {path:'cart', component: CartListComponent},
     {path: 'checkout', component: CheckoutComponent},
     {path: '', component: ShoppingcartComponent},
     {path: 'search/:search', component: ProductListComponent},

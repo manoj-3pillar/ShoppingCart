@@ -44,12 +44,6 @@ export class CheckoutComponent implements OnInit{
             }
         }
         this.orderDetail = new OrderDetail("", "", "", "", "", null, null, "");
-        this.orderDetail.userID = this.msgService.currentUser.userId;
-        this.orderDetail.cartItems = this.cartService.getCartItems(this.orderDetail.userID.toString());
-        if(Object.keys(this.orderDetail.cartItems).length === 0){
-            alert('Order cannot be placed!!');
-            this.router.navigate(['']);
-        }
     }
 
     placeOrder(orderDetail: OrderDetail){
