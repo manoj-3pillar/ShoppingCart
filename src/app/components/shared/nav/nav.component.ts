@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.msgService.getTotalCartItem().subscribe( no => {
       this.CartItems = this.cartservice.getCartItems(this.msgService.currentUser.userId.toString());
-      this.noOfItemsInCart = this.CartItems.length;
+      this.noOfItemsInCart = no;
       this.showOrderHistoryLink = this.msgService.currentUser.isUserLoggedin;
     });
   }

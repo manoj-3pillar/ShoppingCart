@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { Product } from '../models/product';
+import { Observable, Subject } from 'rxjs';
 import { Guid } from 'guid-typescript';
 
 @Injectable({
@@ -24,9 +23,8 @@ export class MessengerService {
     this.subject.next(cartItemLength)
   }
 
-  getTotalCartItem()
+  getTotalCartItem(): Observable<any>
   {
     return this.subject.asObservable()
   }
-
 }

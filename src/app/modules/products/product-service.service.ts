@@ -51,6 +51,8 @@ export class ProductService {
     this.ordersList.push(orderDetail);
     localStorage.setItem('orders' + orderDetail.userID, JSON.stringify(this.ordersList));
     localStorage.removeItem('cart' + orderDetail.userID.toString());
+    var itemsInCart = this.cartService.getCartItems(orderDetail.userID.toString());
+    this.msgService.sendTotalCartItem(itemsInCart.length);
     return true;
   }
   catch(ex: unknown){
