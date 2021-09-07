@@ -40,6 +40,10 @@ export class ProductService {
       return false;
     }
 
+    orderDetail.cartItems.forEach(c => {
+      orderDetail.totalPrice += c.price * c.qty;
+    });
+
     if(Object.keys(previousOrders).length != 0){
     this.ordersList.push(previousOrders);
     }
