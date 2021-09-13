@@ -2,7 +2,8 @@ import { Guid } from "guid-typescript";
 import { CartItem } from "./cart-item";
 
 export class OrderDetail {  
-    public firstName: string;
+        public orderID!: string;
+        public firstName: string;
         public lastName: string;  
         public email: string;
         public address: string;  
@@ -13,6 +14,7 @@ export class OrderDetail {
         public totalPrice: number = 0;
         public cartItems: CartItem[] = [];
         public userID!: Guid;
+        public orderDate!: string;
     constructor(  
         firstName: string, 
         lastName: string,

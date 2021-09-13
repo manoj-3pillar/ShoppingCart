@@ -7,6 +7,7 @@ import Categories from 'src/app/data/categories.json';
 import { OrderDetail } from 'src/app/models/orderDetails';
 import { MessengerService } from '../messenger.service';
 import { CartService } from '../cart/cart-service.service';
+import { Guid } from 'guid-typescript';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,8 @@ export class ProductService {
 
   placeOrder(orderDetail: OrderDetail): Boolean{
     try{
+    var orderID = Guid.create();
+    orderDetail.orderID = orderID.toString();
     orderDetail.userID = this.msgService.currentUser.userId;
     var previousOrders = JSON.parse(localStorage.getItem('orders' + this.msgService.currentUser.userId.toString()) || '{}');
     orderDetail.cartItems = this.cartService.getCartItems(orderDetail.userID.toString());
@@ -39,13 +42,15 @@ export class ProductService {
     if(Object.keys(orderDetail.cartItems).length === 0){
       return false;
     }
-
+    
     orderDetail.cartItems.forEach(c => {
       orderDetail.totalPrice += c.price * c.qty;
     });
 
+    var orderDate = new Date();
+    orderDetail.orderDate = orderDate.toLocaleDateString();
     if(Object.keys(previousOrders).length != 0){
-    this.ordersList.push(previousOrders);
+    this.ordersList.push(previousOrders); 
     }
     
     this.ordersList.push(orderDetail);

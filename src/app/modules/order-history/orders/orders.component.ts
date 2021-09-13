@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { OrderDetail } from "src/app/models/orderDetails";
 import { ProductService } from "../../products/product-service.service";
 
 @Component({
@@ -8,8 +9,9 @@ import { ProductService } from "../../products/product-service.service";
 })
 export class OrdersHistoryComponent implements OnInit{
 
+    orders: OrderDetail[] = []; 
     constructor(private productService: ProductService){}
     ngOnInit(){
-        var orders = this.productService.getOrderList();
+       this.orders = this.productService.getOrderList();
     }
 }

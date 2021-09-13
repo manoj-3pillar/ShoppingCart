@@ -4,17 +4,17 @@
             <thead>
                 <tr>
                     <th>Order ID</th>
-                    <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Order Date</th>
+                    <th>Total Products</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Product 1</td>
-                    <td>2</td>
-                    <td>240</td>
+                <tr *ngFor="let order of orders">
+                    <td>{{order.orderID}}</td>
+                    <td>{{order.orderDate}}</td>
+                    <td>{{order.cartItems.length}}</td>
+                    <td><button>View Order Details</button></td>
                 </tr>
             </tbody>
         </table>

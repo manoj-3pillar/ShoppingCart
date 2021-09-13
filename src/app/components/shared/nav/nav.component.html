@@ -7,7 +7,7 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li *ngIf="showOrderHistoryLink"><a href="#" class="nav-link px-2 text-secondary" (click)="viewOrderHistory()">Order History</a></li>         
+          <li *ngIf="showOrderHistoryLink"><button type="submit" style="border-radius: 10%;" class="nav-link px-2 text-black" (click)="viewOrderHistory()">Order History</button></li>         
         </ul>
 
         <div> <app-product-search></app-product-search></div>
