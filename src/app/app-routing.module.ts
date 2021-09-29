@@ -14,7 +14,7 @@ const appRoutes: Routes = [
     // {path:'cart', component: CartListComponent},
     {path: 'checkout', component: CheckoutComponent},
     {path: '', component: ShoppingcartComponent},
-    {path: 'search/:searchTerm', component: ShoppingcartComponent},
+    {path: 'search/:searchTerm', component: ProductSearchComponent},
     {path: 'orders', component: OrdersHistoryComponent},
     {path: 'orders/products/:id', component: OrderProductComponent}
 ];

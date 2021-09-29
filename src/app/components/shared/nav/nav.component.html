@@ -10,7 +10,11 @@
           <li *ngIf="showOrderHistoryLink"><button type="submit" style="border-radius: 10%;" class="nav-link px-2 text-black" (click)="viewOrderHistory()">Order History</button></li>         
         </ul>
 
-        <div> <app-product-search></app-product-search></div>
+        <div class="searchNav">
+          <input type="text" class="form-control form-control-dark search" name="search" [(ngModel)] = "searchTerm"
+          placeholder="Search Product here.." aria-label="Search"/>
+          <button class="searchButton" (click)="Search()">Search</button>
+        </div>
 
         <div class="text-end">
           <button type="button" class="btn btn-outline-light me-2">Login</button>

@@ -10,19 +10,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./product-search.component.scss']
 })
 export class ProductSearchComponent implements OnInit {
+ 
+  constructor(private productService : ProductService,private route:ActivatedRoute) { }
   productList: Product[] = [];
-  searchTerm:String ="";
-  constructor(private productService : ProductService,private route:ActivatedRoute,private router:Router) { }
-
   ngOnInit(): void {
-    this.route.params.subscribe(params =>{
-      if(params.searchTerm)
-      this.searchTerm= params.searchTerm;
-    });
+    this.route.params.subscribe(params => {
+      if(params.searchTerm){
+       console.log("Products "+JSON.stringify(this.productService.getProducts()));
+       this.productList = this.productService.getProducts().filter( product => product.name.toLowerCase().includes(params.searchTerm.toLowerCase()));
+       console.log("productList "+JSON.stringify(this.productList));
+     } else
+      this.productList= this.productService.getProducts(); 
+     });
   }
-  Search():void{
-    if(this.searchTerm){
-      this.router.navigateByUrl('/search/'+this.searchTerm);
-    }
-  }
+  
 }

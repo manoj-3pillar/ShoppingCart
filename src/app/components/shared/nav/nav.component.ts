@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/modules/cart/cart-service.service';
 import { MessengerService } from 'src/app/modules/messenger.service';
+import { ProductService } from 'src/app/modules/products/product-service.service';
 
 @Component({
   selector: 'app-nav',
@@ -13,14 +15,19 @@ export class NavComponent implements OnInit {
   CartItems = [];
   noOfItemsInCart = 0;
   showOrderHistoryLink = false;
-
-  constructor(private router: Router, private msgService: MessengerService, private cartservice : CartService) { }
-
+  productList: Product[] = [];
+  searchTerm:String ="";
+  constructor(private productService : ProductService,private router: Router, private msgService: MessengerService,private route:ActivatedRoute,
+     private cartservice : CartService) { }
   ngOnInit(): void {
     this.msgService.getTotalCartItem().subscribe( no => {
       this.CartItems = this.cartservice.getCartItems(this.msgService.currentUser.userId.toString());
       this.noOfItemsInCart = no;
       this.showOrderHistoryLink = this.msgService.currentUser.isUserLoggedin;
+    });
+    this.route.params.subscribe(params =>{
+      if(params.searchTerm)
+      this.searchTerm= params.searchTerm;
     });
   }
 
@@ -31,5 +38,10 @@ export class NavComponent implements OnInit {
     if(this.msgService.currentUser.isUserLoggedin){
       this.router.navigate(['/orders']);
     }        
+  }
+  Search():void{
+    if(this.searchTerm){
+      this.router.navigate(['/search/'+this.searchTerm]);
+    }
   }
 }
