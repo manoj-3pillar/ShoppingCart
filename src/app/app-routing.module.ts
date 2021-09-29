@@ -7,13 +7,14 @@ import { ProductListComponent } from './modules/products/product-list/product-li
 import { CartListComponent } from "./modules/cart/cart-list/cart-list.component";
 import { OrdersHistoryComponent } from "./modules/order-history/orders/orders.component";
 import { OrderProductComponent } from "./modules/order-history/orderProducts/orderProducts.component";
+import { ProductSearchComponent } from "./modules/products/product-search/product-search.component";
 
 const appRoutes: Routes = [
     {path: 'product/:id', component: ProductDescriptionComponent},
     // {path:'cart', component: CartListComponent},
     {path: 'checkout', component: CheckoutComponent},
     {path: '', component: ShoppingcartComponent},
-    {path: 'search/:search', component: ProductListComponent},
+    {path: 'search/:searchTerm', component: ShoppingcartComponent},
     {path: 'orders', component: OrdersHistoryComponent},
     {path: 'orders/products/:id', component: OrderProductComponent}
 ];

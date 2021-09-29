@@ -11,24 +11,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductSearchComponent implements OnInit {
   productList: Product[] = [];
-  search:String ="";
+  searchTerm:String ="";
   constructor(private productService : ProductService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params =>{
-      if(params.search)
-      this.search= params.search;
+      if(params.searchTerm)
+      this.searchTerm= params.searchTerm;
     });
   }
-  Search(){
-    if(this.search ==""){
-      this.router.navigateByUrl('/search/'+this.search);
-     //this.ngOnInit();
-    }else{
-      this.productList = this.productList.filter(res =>{
-       // console.log(res.name.toLocaleLowerCase()==this.search.toLocaleLowerCase());
-        return res.name.toLocaleLowerCase().match(this.search.toLocaleLowerCase());
-      });
+  Search():void{
+    if(this.searchTerm){
+      this.router.navigateByUrl('/search/'+this.searchTerm);
     }
   }
 }
