@@ -16,9 +16,7 @@ export class ProductSearchComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       if(params.searchTerm){
-       console.log("Products "+JSON.stringify(this.productService.getProducts()));
        this.productList = this.productService.getProducts().filter( product => product.name.toLowerCase().includes(params.searchTerm.toLowerCase()));
-       console.log("productList "+JSON.stringify(this.productList));
      } else
       this.productList= this.productService.getProducts(); 
      });
