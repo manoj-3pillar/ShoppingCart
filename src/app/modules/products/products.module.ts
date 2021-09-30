@@ -7,6 +7,7 @@ import { ProductItemComponent } from 'src/app/modules/products/product-list/prod
 import { ProductFilterComponent } from 'src/app/modules/products/product-filter/product-filter.component';
 import { ProductSearchComponent } from 'src/app/modules/products/product-search/product-search.component';
 import { MessengerService } from 'src/app/modules/messenger.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MessengerService } from 'src/app/modules/messenger.service';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgxPaginationModule 
   ],
   providers: [
     MessengerService

@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
 
   @Input() filterValue : Filter = new Filter(0, 0, []);
   productList: Product[] = []
-
+  p: number = 1;
   constructor(private productService : ProductService, private route:ActivatedRoute) { 
   }
 

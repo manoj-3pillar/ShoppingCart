@@ -1,5 +1,6 @@
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="col-md-4" *ngFor="let product of productList">
-        <app-product-item [productItem]="product"></app-product-item>        
-    </div>    
+<div  *ngFor="let product of productList | paginate: { itemsPerPage:3, currentPage: p}" >
+    <app-product-item [productItem]="product"></app-product-item>        
+</div> 
+<pagination-controls (pageChange)="p = $event"></pagination-controls>    
 </div>
